@@ -1,3 +1,84 @@
-Como o uso de Contextos pode resolver o problema de PROPS DRILLING:
+Como o uso de Contextos pode resolver o problema de PROPS DRILLING {
 
-Exemplo:
+    O problema de Props Drilling ocorre quando você precisa passar dados de um componente para outro 
+    por uma quantidade de componentes muito aninhada, passando os dados como props através de vários níveis 
+    intermediários de componentes que não precisam desses dados na maioria dos casos. 
+    Isso pode tornar o código difícil de gerenciar, difícil de ler e possivelmente menos eficiente, 
+    especialmente se muitos componentes intermediários forem afetados.
+
+    O Context resolve esse problema, pois é uma ferramenta que permite compartilhar esses dados diretamente
+    entre componentes sem precisar passar por todos os níveis de componentes.
+    Isso aumenta a legibilidade e também a eficiência do código, visto que os componentes que realmente precisam
+    dos dados a serem passados serão aqueles que farão uso das informações.
+
+}
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Exemplo do Problema de Props Drilling {
+
+import React from 'react';
+
+const Exemplo = () => {
+  const usuário = { nome: "Antoin da Silva", idade: 57 };
+
+  return (
+    <Pai usuário={usuário} />
+  );
+};
+
+const Pai = ({ usuário }) => {
+  return <Filho usuário={usuário} />;
+};
+
+const Filho = ({ usuário }) => {
+  return <Neto usuário={usuário} />;
+};
+
+const Neto = ({ usuário }) => {
+  return <div>usuário: {usuário.nome}, idade: {usuário.idade}</div>;
+};
+
+export default Exemplo;
+
+/*
+    Além de feio, o código acima é ineficaz, 
+    passando as informações props varias vezes entre os componentes.
+*/
+
+}
+
+Exemplo usando Context {
+
+import React, { useContext, createContext } from 'react';
+
+// Criação do Context
+const contexto = createContext();
+
+const Exemplo = () => {
+  const usuário = { nome: "Antoin da Silva", idade: 57 };
+
+  return (
+    <contexto.Provider value={usuário}>
+      <Pai />
+    </contexto.Provider>
+  );
+};
+
+const Pai = () => {
+  return <Filho />;
+};
+
+const Filho = () => {
+  return <Neto />;
+};
+
+const Neto = () => {
+  const usuário = useContext(contexto);
+  return <div>usuário: {usuário.nome}, idade: {usuário.idade}</div>;
+};
+
+export default Exemplo;
+
+// Dessa forma, o Neto pode acessar as informações de Pai diretamente
+// Cessando o problema de acesso, ilegibilidade e ineficiência.
+
+}
