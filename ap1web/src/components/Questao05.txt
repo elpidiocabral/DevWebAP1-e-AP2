@@ -1,0 +1,3 @@
+Como o uso de Contextos pode resolver o problema de PROPS DRILLING:
+
+Exemplo:
