@@ -1,11 +1,12 @@
 import { useState, useContext } from "react"
 import FirebaseContext from "../Utils/FirebaseContext"
 import AlunoService from "../Services/AlunoService"
+import { Dropdown } from "bootstrap/dist/js/bootstrap.bundle"
 
 const Criar = () =>{
 
     const [nome, setNome] = useState("")
-    const [curso, setCurso] = useState("")
+    const [curso, setCurso] = useState("ES")
     const [ira, setIra] = useState()
     const [mensagemSucesso, setMensagemSucesso] = useState("");
     const [mensagemErro, setMensagemErro] = useState("");
@@ -17,7 +18,7 @@ const Criar = () =>{
         
         const novoAluno = {nome, curso, ira}
 
-        if (!nome || !curso || ira === "") {
+        if (!nome || ira === "") {
             setMensagemErro("Por favor, preencha todos os campos.");
             return;
         }
@@ -70,13 +71,19 @@ const Criar = () =>{
                     />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Curso</label>
-                    <input className="form-control"
-                        type="text"
-                        name="curso"
+                    <label className="form-label">Curso</label> 
+                    <select
+                        className="form-select"
                         value={curso}
                         onChange={(e) => setCurso(e.target.value)}
-                    />
+                    >
+                        <option value="ES">ES</option>
+                        <option value="EC">EC</option>
+                        <option value="DD">DD</option>
+                        <option value="CC">CC</option>
+                        <option value="RC">RC</option>
+                        <option value="SI">SI</option>
+                    </select>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Ira</label>

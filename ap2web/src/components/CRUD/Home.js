@@ -8,7 +8,7 @@ const Home = () => {
         <div>   
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="/">CRUD</a>
+                    <a className="navbar-brand" href="/">AP2 Web</a>
                     <div className="collapse navbar-collapse">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
@@ -30,6 +30,9 @@ const Home = () => {
                                     </li>
                                     <li>
                                         <Link className="dropdown-item" to="/aluno/listar">Listar</Link>
+                                    </li>
+                                    <li>
+                                        <Link className="dropdown-item" to="/aluno/alunoscurso">Visualizar por Curso</Link>
                                     </li>
                                 </ul>
                             </li>
