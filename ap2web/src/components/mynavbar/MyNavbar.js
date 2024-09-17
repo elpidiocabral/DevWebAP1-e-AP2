@@ -5,7 +5,7 @@ const MyNavbar = () => {
   return (
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
           <div className="container-fluid">
-              <a className="navbar-brand" href="/">CRUD</a>
+              <a className="navbar-brand" href="/">AP2 WEB</a>
               <div className="collapse navbar-collapse">
                   <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                       <li className="nav-item">
@@ -19,14 +19,14 @@ const MyNavbar = () => {
                               data-bs-toggle="dropdown"
                               aria-expanded="false"
                           >
-                                  Dropdown
+                                  Alunos
                           </a>
                           <ul className="dropdown-menu">
                               <li>
-                                  <a href="#" className="dropdown-item">Ação 1</a>
+                                  <a href="components/CRUD/aluno/Criar" className="dropdown-item">Criar</a>
                               </li>
                               <li>
-                                  <a href="#" className="dropdown-item">Ação 2</a>
+                                  <a href="./CRUD/Aluno/Editar.js" className="dropdown-item">Listar</a>
                               </li>
                           </ul>
                       </li>
